@@ -2,6 +2,8 @@ PHP_SERVICE := mini-php
  
 build:
 	#@docker-compose build --no-cache
+	@sh create-env.sh
+	#@printf "APP_IMAGE=mamat08nurahmat/php-cicd\nTAG_IMAGE=$(pwd | grep -o '[^/]*$')-$(git rev-parse HEAD)\nCONTAINER_NAME=php-cicd" > .env
 	@docker-compose up -d --force-recreate --build
 
 test:
@@ -25,4 +27,5 @@ logs:
 tag:
 	@docker tag mamat08nurahmat/php-cicd:latest mamat08nurahmat/php-cicd:2.0.0
 
-
+env:
+	@sh make-env.sh

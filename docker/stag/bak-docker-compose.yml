@@ -1,12 +1,11 @@
 version: "3"
  
 services:
- app:
+ mini-php:
     build:
       context: "../.."
       dockerfile: "docker/stag/php/Dockerfile"
-    image: ${APP_IMAGE}:${TAG_IMAGE}
-    container_name: ${APP_NAME}
+    image: ${APP_IMAGE}
     #image: "mamat08nurahmat/php-cicd:latest"
     #ports:
     #  - "${APP_PORT}:80"
