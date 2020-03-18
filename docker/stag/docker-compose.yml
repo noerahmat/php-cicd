@@ -5,7 +5,7 @@ services:
     build:
       context: "../.."
       dockerfile: "docker/stag/php/Dockerfile"
-    image: ${APP_IMAGE}:${TAG_IMAGE}
+    image: ${APP_IMAGE}:${ENV}-${TAG_IMAGE}
     container_name: ${APP_NAME}
     #image: "mamat08nurahmat/php-cicd:latest"
     #ports:
