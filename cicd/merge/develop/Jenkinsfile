@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+ 
+    options {
+        skipDefaultCheckout(true)
+    }
+ 
+    stages {
+        stage('Git') {
+            steps {
+                echo '> Checking out the Git version control ...'
+                checkout scm
+            }
+        }
+        stage('Build') {
+            steps {
+                echo '> Building the docker images ...'
+                sh 'make -sC docker/stag build'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo '> Testing the docker containers ...'
+                sh 'make -sC docker/stag test'
+            }
+        }
+        stage('Push') {
+            steps {
+                echo '> Pushing the docker images ...'
+                sh 'make -sC docker/stag push'
+            }
+        }
+        stage('Destroy') {
+            steps {
+                echo '> Destroying the docker artifacts ...'
+                sh 'make -sC docker/stag destroy'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo '> Deploying the application images ...'
+            }
+        }
+    }
+}

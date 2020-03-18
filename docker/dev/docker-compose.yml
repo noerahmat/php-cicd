@@ -1,0 +1,9 @@
+version: "3"
+ 
+services:
+  mini_php:
+    build:
+      context: "php"
+    hostname: "mini-php"
+    volumes:
+      - "../../:/app:consistent"

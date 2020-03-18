@@ -1,0 +1,8 @@
+version: "3"
+ 
+services:
+  mini_php:
+    build:
+      context: "../.."
+      dockerfile: "docker/stag/php/Dockerfile"
+    image: "inanzzz/mini_php:latest"
